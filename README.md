@@ -9,6 +9,7 @@ systemctl enable sshd --now
 ```
 
 ## journalctl
+https://www.golinuxcloud.com/view-logs-using-journalctl-filter-journald/
 ```
 journalctl
 # last page + desc if possible
