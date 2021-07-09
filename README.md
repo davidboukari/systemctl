@@ -27,6 +27,8 @@ journalctl --since "10 minutes ago"
 ```
 
 ## Create a service
+
+* https://doc.ubuntu-fr.org/creer_un_service_avec_systemd
 * http://perso.univ-lemans.fr/~emicoul/Documentations/Linux/outils_syst/Nouveau%20service%20systemd.html
 ```
  Créer un service systemd pour démarrage au boot
