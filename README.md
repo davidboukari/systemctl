@@ -52,7 +52,7 @@ journalctl --since "10 minutes ago"
 export SERVICE=openvpn
 
 tee /etc/systemd/system/${SERVICE}.service<<EOF
-[[Unit]
+[Unit]
 Description=${SERVICE} service
 #After=network-online.target
 
