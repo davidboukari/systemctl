@@ -6,6 +6,21 @@ systemctl list-units --type=service
 systemctl status sshd
 systemctl enble sshd 
 systemctl enable sshd --now
+
+
+systemctl is-enabled vault
+enabled
+
+systemctl list-units --type=service
+UNIT                               LOAD   ACTIVE SUB     DESCRIPTION
+auditd.service                     loaded active running Security Auditing Service
+containerd.service                 loaded active running containerd container runtime
+crond.service                      loaded active running Command Scheduler
+dbus.service                       loaded active running D-Bus System Message Bus
+docker.service                     loaded active running Docker Application Container Engine
+firewalld.service                  loaded active running firewalld - dynamic firewall daemon
+getty@tty1.service                 loaded active running Getty on tty1
+irqbalance.service
 ```
 
 ## journalctl
@@ -34,29 +49,32 @@ journalctl --since "10 minutes ago"
  Créer un service systemd pour démarrage au boot
 
 1 - Éditer le fichier de service :
-vi /etc/systemd/system/openvpn.service
+export SERVICE=openvpn
+
+tee /etc/systemd/system/${SERVICE}.service<<EOF
 [[Unit]
-Description=Openvpn service
+Description=${SERVICE} service
 #After=network-online.target
 
 [Service]
 Type=forking
-Environment="CONF_DIR=/etc/openvpn"
-WorkingDirectory=/etc/openvpn
+Environment="CONF_DIR=/etc/${SERVICE}"
+WorkingDirectory=/etc/${SERVICE}
 RemainAfterExit=yes
-#ExecStart=/usr/bin/sudo -b /usr/sbin/openvpn server.conf
-ExecStart=/usr/sbin/openvpn --config server.conf --daemon
+#ExecStart=/usr/bin/sudo -b /usr/sbin/${SERVICE} server.conf
+ExecStart=/usr/sbin/${SERVICE} --config server.conf --daemon
 
 [Install]
 WantedBy=multi-user.target
+EOF
 
 2 - [Optionnel] Créer le lien vers systemd :
-ln -s /lib/systemd/system/openvpn.service /etc/systemd/system/multi-user.target.wants/
+ln -s /lib/systemd/system/${SERVICE}.service /etc/systemd/system/multi-user.target.wants/
 
 3 - Recharger le démon systemctl :
 systemctl daemon-reload
 
 4 - Activer le nouveau service :
-systemctl enable openvpn.service 
-systemctl start openvpn.service 
+systemctl enable ${SERVICE}.service 
+systemctl start  ${SERVICE}.service 
 ```
