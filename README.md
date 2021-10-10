@@ -4,7 +4,7 @@
 ```
 systemctl list-units --type=service
 systemctl status sshd
-systemctl enble sshd 
+systemctl enable sshd 
 systemctl enable sshd --now
 
 
