@@ -7,6 +7,24 @@ systemctl status sshd
 systemctl enable sshd 
 systemctl enable sshd --now
 
+# get runlevel 
+$ sudo systemctl get-default 
+multi-user.target
+
+# list all targets
+systemctl list-units --type=target
+UNIT                  LOAD   ACTIVE SUB    DESCRIPTION
+basic.target          loaded active active Basic System
+cryptsetup.target     loaded active active Local Encrypted Volumes
+getty-pre.target      loaded active active Login Prompts (Pre)
+getty.target          loaded active active Login Prompts
+local-fs-pre.target   loaded active active Local File Systems (Pre)
+local-fs.target       loaded active active Local File Systems
+multi-user.target     loaded active active Multi-User System
+network-online.target loaded active active Network is Online
+network.target        loaded active active Network
+nfs-client.target     loaded active active NFS client services
+...
 
 systemctl is-enabled vault
 enabled
