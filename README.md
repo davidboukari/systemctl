@@ -98,7 +98,7 @@ systemctl start  ${SERVICE}.service
 ```
 
 ## Service activated
-{code}
+```
 ls -lahtr /etc/systemd/system/multi-user.target.wants/
 total 8.0K
 lrwxrwxrwx  1 root root   44 Jan 31 21:10 systemd-networkd.service -> /lib/systemd/system/systemd-networkd.service
@@ -141,7 +141,7 @@ lrwxrwxrwx  1 root root   40 Feb 24 09:14 snap-lxd-22526.mount -> /etc/systemd/s
 drwxr-xr-x 20 root root 4.0K Feb 24 09:14 ..
 lrwxrwxrwx  1 root root   45 Feb 24 09:14 snap.lxd.activate.service -> /etc/systemd/system/snap.lxd.activate.service
 lrwxrwxrwx  1 root root   42 Mar  7 09:02 firewall_perso.service -> /etc/systemd/system/firewall_perso.service
-{code}
+
 
 
 
